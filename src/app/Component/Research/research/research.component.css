@@ -1,0 +1,9 @@
+.body {
+  background-color: black;
+}
+
+img {
+  height: 275px;
+  width: 200px;
+  object-fit: cover;
+}

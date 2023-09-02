@@ -1,0 +1,13 @@
+.rowimg {
+  height: 275px;
+  width: 200px;
+  box-sizing: border-box;
+  object-fit: cover;
+  transition: transform 450ms;
+  margin-right: 7px;
+}
+
+.rowimg:hover {
+  transform: scale(1.1);
+  cursor: pointer;
+}

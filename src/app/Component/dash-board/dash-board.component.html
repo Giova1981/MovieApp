@@ -1,0 +1,253 @@
+<div class="container-fluid p-0 mt-3">
+  <!-- Carousel -->
+  <div
+    id="carouselExampleDark"
+    class="carousel carousel-dark slide"
+    data-bs-ride="carousel"
+  >
+    <div class="carousel-inner">
+      <div
+        class="carousel-item"
+        data-bs-interval="7000"
+        *ngFor="let movie of trendingMovies; let i = index"
+        [ngClass]="{ active: i === 0 }"
+      >
+        <img
+          src="{{
+            movie.poster_path
+              ? 'https://image.tmdb.org/t/p/original' + movie.backdrop_path
+              : noImage
+          }}"
+          class="d-block w-100"
+          alt="{{ movie.title }}"
+        />
+        <div class="carousel-caption d-none d-md-block">
+          <h2>{{ movie.original_title }}</h2>
+          <p>{{ movie.overview }}</p>
+        </div>
+      </div>
+    </div>
+    <button
+      class="carousel-control-prev"
+      type="button"
+      data-bs-target="#carouselExampleDark"
+      data-bs-slide="prev"
+    >
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button
+      class="carousel-control-next"
+      type="button"
+      data-bs-target="#carouselExampleDark"
+      data-bs-slide="next"
+    >
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  <!-- End Carousel -->
+
+  <!-- Latest Movies -->
+  <h5 class="text-light pb-2 pt-2 mt-2">Latest Movies</h5>
+  <div class="cont" appAppHorizontalScroll>
+    <div class="items">
+      <div *ngFor="let movie of latestMovies">
+        <app-dash-card [movie]="movie"></app-dash-card>
+      </div>
+    </div>
+  </div>
+  <!-- End Latest Movies -->
+
+  <!-- Trending Movies -->
+  <div
+    class="text-light pb-2 pt-2 mt-2"
+    (click)="onSelectList('trending-Movies')"
+  >
+    <h5 style="cursor: pointer">Trending Movies</h5>
+  </div>
+  <div class="cont" appAppHorizontalScroll>
+    <div class="items">
+      <div *ngFor="let movie of trendingMovies">
+        <app-dash-card [movie]="movie"></app-dash-card>
+      </div>
+    </div>
+  </div>
+  <!-- End Trending Movies -->
+
+  <!-- Popular Movies -->
+  <div
+    class="text-light pb-2 pt-2 mt-2"
+    (click)="onSelectList('popular-Movies')"
+  >
+    <h5 style="cursor: pointer">Popular Movies</h5>
+  </div>
+  <div class="cont" appAppHorizontalScroll>
+    <div class="items">
+      <div *ngFor="let movie of popularMovies">
+        <app-dash-card [movie]="movie"></app-dash-card>
+      </div>
+    </div>
+  </div>
+  <!-- End Popular Movies -->
+
+  <!-- Upcoming Movies -->
+  <div
+    class="text-light pb-2 pt-2 mt-2"
+    (click)="onSelectList('upcoming-Movies')"
+  >
+    <h5 style="cursor: pointer">Upcoming Movies</h5>
+  </div>
+  <div class="cont" appAppHorizontalScroll>
+    <div class="items">
+      <div *ngFor="let movie of upComingMovies">
+        <app-dash-card [movie]="movie"></app-dash-card>
+      </div>
+    </div>
+  </div>
+  <!-- End Upcoming Movies -->
+
+  <!-- Now Playing Movies -->
+  <div
+    class="text-light pb-2 pt-2 mt-2"
+    (click)="onSelectList('now-Playing-Movies')"
+  >
+    <h5 style="cursor: pointer">Now Playing Movies</h5>
+  </div>
+  <div class="cont" appAppHorizontalScroll>
+    <div class="items">
+      <div *ngFor="let movie of nowPlayingMovies">
+        <app-dash-card [movie]="movie"></app-dash-card>
+      </div>
+    </div>
+  </div>
+  <!-- End Now Playing Movies -->
+
+  <!-- Originals Movies -->
+  <div
+    class="text-light pb-2 pt-2 mt-2"
+    (click)="onSelectList('originals-Movies')"
+  >
+    <h5 style="cursor: pointer">Originals Movies</h5>
+  </div>
+  <div class="cont mb-3" appAppHorizontalScroll>
+    <div class="items">
+      <div *ngFor="let movie of originals">
+        <app-dash-card [movie]="movie"></app-dash-card>
+      </div>
+    </div>
+  </div>
+  <!-- End Now Playing Movies -->
+
+  <!-- Action Movies -->
+  <div
+    class="text-light pb-2 pt-2 mt-2"
+    (click)="onSelectList('action-Movies')"
+  >
+    <h5 style="cursor: pointer">Action Movies</h5>
+  </div>
+  <div class="cont mb-3" appAppHorizontalScroll>
+    <div class="items">
+      <div *ngFor="let movie of actionMovies">
+        <app-dash-card [movie]="movie"></app-dash-card>
+      </div>
+    </div>
+  </div>
+  <!-- End Action Movies -->
+
+  <!-- Adventure Movies -->
+  <div
+    class="text-light pb-2 pt-2 mt-2"
+    (click)="onSelectList('adventure-Movies')"
+  >
+    <h5 style="cursor: pointer">Adventure Movies</h5>
+  </div>
+  <div class="cont mb-3" appAppHorizontalScroll>
+    <div class="items">
+      <div *ngFor="let movie of adventureMovies">
+        <app-dash-card [movie]="movie"></app-dash-card>
+      </div>
+    </div>
+  </div>
+  <!-- End Adventure Movies -->
+
+  <!-- Animation Movies -->
+  <div
+    class="text-light pb-2 pt-2 mt-2"
+    (click)="onSelectList('animation-Movies')"
+  >
+    <h5 style="cursor: pointer">Animation Movies</h5>
+  </div>
+  <div class="cont mb-3" appAppHorizontalScroll>
+    <div class="items">
+      <div *ngFor="let movie of animationMovies">
+        <app-dash-card [movie]="movie"></app-dash-card>
+      </div>
+    </div>
+  </div>
+  <!-- End Animation Movies -->
+
+  <!-- Comedy Movies -->
+  <div
+    class="text-light pb-2 pt-2 mt-2"
+    (click)="onSelectList('comedy-Movies')"
+  >
+    <h5 style="cursor: pointer">Comedy Movies</h5>
+  </div>
+  <div class="cont mb-3" appAppHorizontalScroll>
+    <div class="items">
+      <div *ngFor="let movie of comedyMovies">
+        <app-dash-card [movie]="movie"></app-dash-card>
+      </div>
+    </div>
+  </div>
+  <!-- End Comedy Movies -->
+
+  <!-- Documentary Movies -->
+  <div
+    class="text-light pb-2 pt-2 mt-2"
+    (click)="onSelectList('documentary-Movies')"
+  >
+    <h5 style="cursor: pointer">Documentary Movies</h5>
+  </div>
+  <div class="cont mb-3" appAppHorizontalScroll>
+    <div class="items">
+      <div *ngFor="let movie of documentaryMovies">
+        <app-dash-card [movie]="movie"></app-dash-card>
+      </div>
+    </div>
+  </div>
+  <!-- End Documentary Movies -->
+
+  <!-- Science Fiction -->
+  <div
+    class="text-light pb-2 pt-2 mt-2"
+    (click)="onSelectList('science-Fictions')"
+  >
+    <h5 style="cursor: pointer">Science Fiction</h5>
+  </div>
+  <div class="cont mb-3" appAppHorizontalScroll>
+    <div class="items">
+      <div *ngFor="let movie of scienceFictions">
+        <app-dash-card [movie]="movie"></app-dash-card>
+      </div>
+    </div>
+  </div>
+  <!-- End Science Fiction -->
+
+  <!-- Thriller Movies -->
+  <div
+    class="text-light pb-2 pt-2 mt-2"
+    (click)="onSelectList('thriller-Movies')"
+  >
+    <h5 style="cursor: pointer">Thriller Movies</h5>
+  </div>
+  <div class="cont mb-3" appAppHorizontalScroll>
+    <div class="items">
+      <div *ngFor="let movie of thrillerMovies">
+        <app-dash-card [movie]="movie"></app-dash-card>
+      </div>
+    </div>
+  </div>
+  <!-- End Thriller Movies -->
+</div>

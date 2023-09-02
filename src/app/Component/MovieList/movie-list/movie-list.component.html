@@ -1,0 +1,54 @@
+<div class="container mt-3 p-4">
+  <h2 class="text-center text-danger mt-4 mb-3">{{ pageTitle }}</h2>
+  <div class="row mt-3 p-2">
+    <div
+      class="col-xxl-3 col-xl-4 col-lg-4 col-md-6"
+      *ngFor="let movie of results"
+    >
+      <div
+        class="card mb-3 bg-dark border border-danger text-light mt-3"
+        style="max-width: 540px"
+      >
+        <div
+          class="row g-0"
+          [routerLink]="['../detail', movie.id]"
+          style="cursor: pointer"
+        >
+          <div class="col-md-4">
+            <img
+              src="{{
+                movie.poster_path
+                  ? 'https://image.tmdb.org/t/p/original' + movie.poster_path
+                  : noImage
+              }}"
+              class="img-fluid rounded-start"
+              alt="{{ movie.title }}"
+            />
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h6 class="card-title fw-bold">
+                {{ movie.title ? movie.title : movie.name }}
+              </h6>
+              <p class="card-text">
+                {{
+                  (movie.overview
+                    ? movie.overview
+                    : "No overview for this movie"
+                  ) | shortenText : 40
+                }}
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row mt-3 mb-3">
+    <app-pagination
+      [totalPages]="totalPages"
+      [currentPage]="currentPage"
+      (pageChange)="onPageChange($event)"
+    ></app-pagination>
+  </div>
+</div>
